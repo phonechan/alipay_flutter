@@ -19,6 +19,6 @@ void main() {
   });
 
   test('alipay', () async {
-    expect(await platform.alipay(''), '42');
+    expect(await platform.alipay('', 'cil'), '42');
   });
 }

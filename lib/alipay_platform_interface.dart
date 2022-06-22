@@ -23,7 +23,8 @@ abstract class AlipayPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<Map?> alipay(String? paymentString) {
-    throw UnimplementedError('alipay(String?) has not been implemented.');
+  Future<Map?> alipay(String? paymentString, String? urlScheme) {
+    throw UnimplementedError(
+        'alipay(String?, String?) has not been implemented.');
   }
 }
