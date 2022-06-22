@@ -1,5 +1,5 @@
 name: alipay
-description: A new Flutter plugin project.
+description: A flutter plugin for make payment with Alipay ( Android & iOS ).
 version: 0.0.1
 homepage:
 
