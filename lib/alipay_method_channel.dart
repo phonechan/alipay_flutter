@@ -10,8 +10,9 @@ class MethodChannelAlipay extends AlipayPlatform {
   final methodChannel = const MethodChannel('alipay');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<Map?> alipay(String? paymentString) async {
+    final result = await methodChannel
+        .invokeMethod<Map?>('alipay', {"paymentString": paymentString});
+    return result;
   }
 }

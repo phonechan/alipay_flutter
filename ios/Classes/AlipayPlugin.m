@@ -1,4 +1,5 @@
 #import "AlipayPlugin.h"
+#import "AlipaySDK/AlipaySDK.h"
 
 @implementation AlipayPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -10,9 +11,13 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"getPlatformVersion" isEqualToString:call.method]) {
-    result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
-  } else {
+    if ([@"alipay" isEqualToString:call.method]){
+       NSString* paymentString = [call.arguments objectForKey:@"paymentString"];
+       [[AlipaySDK defaultService] payOrder:paymentString fromScheme:@"cil" callback:^(NSDictionary *resultDic) {
+           NSLog(@"result = %@",resultDic);
+           result(resultDic);
+       }];
+   } else {
     result(FlutterMethodNotImplemented);
   }
 }

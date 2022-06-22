@@ -15,6 +15,14 @@ A new Flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
+  
+  # AlipaySDK
+  s.frameworks       = 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics', 'UIKit', 'Foundation', 'CFNetwork', 'CoreMotion', 'WebKit'
+  s.libraries        = 'z', 'c++'
+  s.vendored_frameworks = 'Framework/AlipaySDK.framework'
+  s.resource = 'Framework/AlipaySDK.bundle'
+  # AlipaySDK end
+  
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
 

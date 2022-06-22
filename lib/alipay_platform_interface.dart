@@ -14,7 +14,7 @@ abstract class AlipayPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelAlipay].
   static AlipayPlatform get instance => _instance;
-  
+
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [AlipayPlatform] when
   /// they register themselves.
@@ -23,7 +23,7 @@ abstract class AlipayPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<Map?> alipay(String? paymentString) {
+    throw UnimplementedError('alipay(String?) has not been implemented.');
   }
 }
