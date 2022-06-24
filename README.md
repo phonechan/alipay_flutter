@@ -15,7 +15,7 @@ info.plist
         <string>Editor</string>
         <key>CFBundleURLSchemes</key>
         <array>
-            <string>cil</string> # 改成自己的 Scheme
+            <string>cil</string> # 改成自己的 Scheme, 纯字母
         </array>
     </dict>
 </array>
@@ -55,6 +55,8 @@ info.plist
 </dict>
 ```
 
+a> Objective-C 版本
+
 AppDelegate.m
 ```
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -72,10 +74,35 @@ AppDelegate.m
 }
 ```
 
-参考链接：
-1、https://global.alipay.com/docs/ac/app_cn/integration_ios
+b> Swift 版本
 
-2、https://opendocs.alipay.com/open/204/105295/
+Runner-Bridging-Header.h
+```
+#import <AlipaySDK/AlipaySDK.h>
+#import <UIKit/UIKit.h>
+```
+
+AppDelegate.swift
+```
+override func application(
+    _ app: UIApplication,
+    open url: URL,
+    options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+) -> Bool{
+    if url.host == "safepay" {
+        AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: nil)
+    }
+    if url.host == "platformapi" {
+        AlipaySDK.defaultService().processAuthResult(url, standbyCallback: nil)
+    }
+    return true;
+}
+```
+
+参考链接：
+> 1、https://global.alipay.com/docs/ac/app_cn/integration_ios
+
+> 2、https://opendocs.alipay.com/open/204/105295/
 
 
 
